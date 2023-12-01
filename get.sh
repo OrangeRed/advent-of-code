@@ -1,7 +1,7 @@
 #!/bin/bash
 
-AOC="$HOME/Personal/advent-of-code"
-AOC_COOKIE=$(cat $AOC/.env | grep -e AOC_COOKIE | cut -d = -f2)
+AOC_PATH="$HOME/Personal/advent-of-code"
+AOC_COOKIE=$(cat $AOC_PATH/.env | grep -e AOC_COOKIE | cut -d = -f2)
 
 if [ ! $AOC_COOKIE ]; then
     echo "Error: Advent of Code Auth Cookie is missing."
