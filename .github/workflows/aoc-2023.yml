@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: "50 4 1-25 12 *" # from December 1st to 26th every day at 4:50 UTC (23:50 EST)
+    - cron: "50 4 1-26 12 *" # from December 1st to 26th every day at 4:50 UTC (23:50 EST previous day)
 
   # push: # (disabled) run on push, be careful with this setting
   #       # as the workflow should only be triggered at a rate lower than
@@ -20,19 +20,19 @@ jobs:
 
       - uses: joblo2213/aoc-badges-action@v3
         with:
-          userid: ${{ secrets.AOC_USER_ID }} # your user id, see setup on how to obtain
+          userid: ${{ secrets.AOC_USER_ID }}
           session: ${{ secrets.AOC_COOKIE }}
           year: 2023
           daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/Advent%20of%20Code%202023-)[0-9]+(?=/25.*)'
 
           # Optional inputs:
           #
-          # year: 2021                                                                                     # The year for which stats should be retrieved
-          # leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'               # The url of the leaderboard from witch the data is fetched. Typically your private leaderboard.
-          # file: 'README.md'                                                                              # The file that contains the badges
-          # dayRegex: '(?<=https:\/\/img\.shields\.io\/badge\/day%20📅-)[0-9]+(?=-blue)'                    # Regular expression that finds the content of the day badge in your file.
-          # starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'              # Regular expression that finds the content of the stars badge in your file.
-          # daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  # Regular expression that finds the content of the days completed badge iun your file.
+          # year: 2021                                                                                    # The year for which stats should be retrieved
+          # leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/userid.json'             # The url of the leaderboard from witch the data is fetched. Typically your private leaderboard.
+          # file: 'README.md'                                                                             # The file that contains the badges
+          # dayRegex: '(?<=https:\/\/img\.shields\.io\/badge\/day-)[0-9]+(?=-blue)'                       # Regular expression that finds the content of the day badge in your file.
+          # starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'             # Regular expression that finds the content of the stars badge in your file.
+          # daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)' # Regular expression that finds the content of the days completed badge iun your file.
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
