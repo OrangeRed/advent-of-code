@@ -3,7 +3,7 @@
 My solutions to [Advent of Code](https://adventofcode.com/).
 These are not necessary the best or the fastest solution but what I wrote during the contest itself
 
-![Solutions](https://img.shields.io/badge/Advent%20of%20Code%202023-1/25-thistle?style=flat-square)
+![](https://img.shields.io/badge/Advent%20of%20Code%202023-1/25-thistle?style=for-the-badge)&nbsp;
 
 ## Guide
 

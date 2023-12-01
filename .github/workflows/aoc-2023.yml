@@ -3,11 +3,11 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: "6 5 1-25 12 *" # from December 1st to 25th every day at 5:06am (avoid load at full hours)
+    - cron: "50 4 1-25 12 *" # from December 1st to 26th every day at 4:50 UTC (23:50 EST)
 
-# push: # (disabled) run on push, be careful with this setting
-#       # as the workflow should only be triggered at a rate lower than
-#       # 4 times a hour to keep traffic on aoc site low
+  # push: # (disabled) run on push, be careful with this setting
+  #       # as the workflow should only be triggered at a rate lower than
+  #       # 4 times a hour to keep traffic on aoc site low
 
 jobs:
   update:
@@ -23,7 +23,7 @@ jobs:
           userid: ${{ secrets.AOC_USER_ID }} # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_COOKIE }}
           year: 2023
-          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/Advent%20of%20Code%202023-)[0-9]+(?=/25.*)' # Regular expression that finds the content of the days completed badge in your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/Advent%20of%20Code%202023-)[0-9]+(?=/25.*)'
 
           # Optional inputs:
           #
@@ -36,5 +36,5 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Update badges
+          commit_message: Update Advent of Code badges
           file_pattern: README.md
