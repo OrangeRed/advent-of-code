@@ -1,1 +1,4 @@
-venv
+.env
+
+in.txt
+test.txt
