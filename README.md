@@ -2,7 +2,7 @@
 
 This is a repository of my solutions for [Advent of Code](https://adventofcode.com/).
 
-![](https://img.shields.io/badge/Advent%20of%20Code%202023-3/25-lightpink?style=for-the-badge)
+![](https://img.shields.io/badge/2023%20Puzzles-2/25-lightpink?style=for-the-badge)
 
 ## Guide
 
@@ -25,4 +25,14 @@ $ ./get.sh > in.txt
 
 # Download puzzle input for 2023 day 1 and save it to 'in.txt'
 $ ./get.sh 2023 1 > in.txt
+```
+
+### Running
+
+```shell
+# Run python script using stdin
+$ python 2023/day01a.py < in.txt
+
+# Run python script using the result from ./get.sh
+$ ./get.sh 2023 1 > python 2023/day01a.py
 ```

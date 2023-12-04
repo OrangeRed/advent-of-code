@@ -2,12 +2,15 @@ name: Update AoC Badges 2023
 on:
   workflow_dispatch:
 
-  schedule:
-    - cron: "50 4 1-26 12 *" # from December 1st to 26th every day at 4:50 UTC (23:50 EST previous day)
+  # schedule:
+  #   - cron: "50 4 1-26 12 *" # from December 1st to 26th every day at 4:50 UTC (23:50 EST previous day)
 
-  # push: # (disabled) run on push, be careful with this setting
-  #       # as the workflow should only be triggered at a rate lower than
-  #       # 4 times a hour to keep traffic on aoc site low
+  push:
+    # run on push, be careful with this setting
+    # as the workflow should only be triggered at a rate lower than
+    # 4 times a hour to keep traffic on aoc site low
+    paths:
+      - ./2023/**
 
 jobs:
   update:
@@ -23,7 +26,7 @@ jobs:
           userid: ${{ secrets.AOC_USER_ID }}
           session: ${{ secrets.AOC_COOKIE }}
           year: 2023
-          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/Advent%20of%20Code%202023-)[0-9]+(?=/25.*)'
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2023%20Puzzles-)[0-9]+(?=/25.*)'
 
           # Optional inputs:
           #
