@@ -24,15 +24,16 @@ for line in f[1:]:
                     seeds.append([src + r, seed_end])
                 break
 
-            elif seed_end >= src and seed_end < src + r:
-                mapped_end = dest + (seed_end - src)
-                if seed_start > src:
-                    mapped_start = dest + (seed_start - src)
+            elif seed_start < src and seed_end > src:
+                mapped_start = dest
+                if seed_end < src + r:
+                    mapped_end = dest + (seed_end - src)
                     seeds[idx] = [mapped_start, mapped_end]
                 else:
-                    mapped_start = dest
+                    mapped_end = dest + r - 1
                     seeds[idx] = [mapped_start, mapped_end]
-                    seeds.append([seed_start, src - 1])
+                    seeds.append([src + r, seed_end])
+                seeds.append([seed_start, src - 1])
                 break
 
 

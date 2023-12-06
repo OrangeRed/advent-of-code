@@ -11,6 +11,6 @@ for card, line in enumerate(lines):
     matching = winning_set.intersection(my_set)
     if matching:
         for idx in range(len(matching)):
-            copys[card + idx + 1] += (1 * copys[card])
+            copys[card + idx + 1] += 1 * copys[card]
 
 print(sum(copys))
