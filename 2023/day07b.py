@@ -1,7 +1,7 @@
 from typing import Tuple
 
 
-def getPos(cards: dict[str, int], jokers: int) -> int:
+def getHandType(cards: dict[str, int], jokers: int) -> int:
     # len(cards) == 0 is all jokers
     if len(cards) == 0 or (len(cards) == 1 and (5 - jokers) in cards.values()):
         return 6  # Five of a kind
@@ -30,20 +30,17 @@ for cards_str, bid in [line.split() for line in open(0).read().splitlines()]:
         else:
             cards[card] = (cards[card] + 1) if card in cards else 1
 
-    pos = getPos(cards, jokers)
-    if not sorted_hands[pos]:
-        sorted_hands[pos].append((cards_str, bid))
-    else:
-        insert_at = 0
-        for hand, _ in sorted_hands[pos]:
-            for i, char in enumerate(hand):
-                if value.find(cards_str[i]) > value.find(char):
-                    insert_at += 1
-                elif value.find(cards_str[i]) == value.find(char):
-                    continue  # Try next char pair
-                break
+    hand_type = getHandType(cards, jokers)
+    insert_at = 0
+    for hand, _ in sorted_hands[hand_type]:
+        for i, char in enumerate(hand):
+            if value.find(cards_str[i]) > value.find(char):
+                insert_at += 1
+            elif value.find(cards_str[i]) == value.find(char):
+                continue  # Try next char pair
+            break
 
-        sorted_hands[pos].insert(insert_at, (cards_str, bid))
+    sorted_hands[hand_type].insert(insert_at, (cards_str, bid))
 
 
 total, rank = 0, 1
