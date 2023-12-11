@@ -2,7 +2,7 @@
 
 This is a repository of my solutions for [Advent of Code](https://adventofcode.com/).
 
-![](https://img.shields.io/badge/2023%20Puzzles-10/25-lightpink?style=for-the-badge)
+![](https://img.shields.io/badge/2023%20Puzzles-11/25-lightpink?style=for-the-badge)
 
 ## Guide
 
