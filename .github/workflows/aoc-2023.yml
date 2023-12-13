@@ -1,4 +1,4 @@
-name: Update AoC Badges 2023
+name: Update 2023 AoC Badges
 on:
   workflow_dispatch:
 
@@ -21,23 +21,24 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: joblo2213/aoc-badges-action@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          userid: ${{ secrets.AOC_USER_ID }}
-          session: ${{ secrets.AOC_COOKIE }}
-          year: 2023
-          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2023%20Puzzles-)[0-9]+(?=/25.*)'
+          python-version: "3.10"
 
-          # Optional inputs:
-          #
-          # year: 2021                                                                                    # The year for which stats should be retrieved
-          # leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/userid.json'             # The url of the leaderboard from witch the data is fetched. Typically your private leaderboard.
-          # file: 'README.md'                                                                             # The file that contains the badges
-          # dayRegex: '(?<=https:\/\/img\.shields\.io\/badge\/day-)[0-9]+(?=-blue)'                       # Regular expression that finds the content of the day badge in your file.
-          # starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'             # Regular expression that finds the content of the stars badge in your file.
-          # daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)' # Regular expression that finds the content of the days completed badge iun your file.
+      - name: Install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install regex requests
+
+      - name: Run Python Script
+        run: python .github/aoc-badges.py
+        env:
+          AOC_USER_ID: ${{ secrets.AOC_USER_ID }}
+          AOC_COOKIE: ${{ secrets.AOC_COOKIE }}
+          YEAR: 2023
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Update Advent of Code badges
+          commit_message: Update README
           file_pattern: README.md
