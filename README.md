@@ -3,6 +3,8 @@
 This is a repository of my solutions for [Advent of Code](https://adventofcode.com/).
 
 ![](https://img.shields.io/badge/2023%20Puzzles-13/25-lightpink?style=for-the-badge)
+<br>
+![](https://img.shields.io/badge/2022%20Puzzles-0/25-lightpink?style=for-the-badge)
 
 ## Guide
 
