@@ -7,11 +7,11 @@ def rotate(platform: list[list[str]], clockwise=True) -> list[list[str]]:
     if clockwise:
         for line in platform[::-1]:
             for idx, char in enumerate(line):
-                rotated_platform[idx] = rotated_platform[idx] + [char]
+                rotated_platform[idx].append(char)
     else:
         for line in platform:
             for idx, char in enumerate(line[::-1]):
-                rotated_platform[idx] = rotated_platform[idx] + [char]
+                rotated_platform[idx].append(char)
 
     return rotated_platform
 
