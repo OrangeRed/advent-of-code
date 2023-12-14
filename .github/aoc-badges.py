@@ -63,16 +63,16 @@ for day in data["members"][userid]["completion_day_level"].values():
 
 
 # read file
-f = open("README.md", mode="r", encoding="utf-8")
-txt = f.read()
-f.close()
+with open("README.md", mode="r", encoding="utf-8") as f:
+    txt = f.read()
+    # look for "https://img.shields.io/badge/2022*[num]/25*"
+    badge = "https:\/\/img\.shields\.io\/badge\/"
+    # txt = regex.sub(f"(?<={badge}{target.year}.*)\d+(?=\/50*)", str(stars), txt)
+    txt = regex.sub(
+        f"(?<={badge}{target.year}.*)\d+(?=\/25*)", str(days_completed), txt
+    )
 
-# look for "https://img.shields.io/badge/2022*[num]/25*"
-badge = "https:\/\/img\.shields\.io\/badge\/"
-# txt = regex.sub(f"(?<={badge}{target.year}.*)\d+(?=\/50*)", str(stars), txt)
-txt = regex.sub(f"(?<={badge}{target.year}.*)\d+(?=\/25*)", str(days_completed), txt)
 
 # write back file
-f = open("README.md", mode="w", encoding="utf-8")
-f.write(txt)
-f.close()
+with open("README.md", mode="w", encoding="utf-8") as f:
+    f.write(txt)
