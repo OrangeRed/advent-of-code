@@ -13,7 +13,7 @@ def convert_to_int(x: str) -> int:
 
 
 for line in open(0):
-    digits = re.findall(f"(?=({ '|'.join(words) }|\d))", line)
+    digits = re.findall(f"(?=({ '|'.join(words) }|\\d))", line)
 
     tens_place = convert_to_int(digits[0]) * 10
     ones_place = convert_to_int(digits[-1])

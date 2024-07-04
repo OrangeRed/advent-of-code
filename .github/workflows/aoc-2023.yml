@@ -10,7 +10,7 @@ on:
     # as the workflow should only be triggered at a rate lower than
     # 4 times a hour to keep traffic on aoc site low
     paths:
-      - 2023/**
+      - "**/2023/**"
 
 jobs:
   update:
