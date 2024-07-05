@@ -12,7 +12,7 @@ This is a repository of my solutions for [Advent of Code](https://adventofcode.c
 
 Make sure to set the `AOC_COOKIE` env with your session secret.
 To get your session secret press F12 while you are logged in on [adventofcode.com](https://adventofcode.com/) to open the developer tools of your browser.
-Then open the `Application` Tab on Chromium Browsers or `Storage` on firefox. There you can have a look at your cookies and copy the session id.
+Then open the `Application` Tab on Chromium Browsers or `Storage` on Firefox. There you can have a look at your cookies and copy the session id.
 It won't be possible to use the puzzle input get script without this session id.
 
 ### Get Script
@@ -32,9 +32,15 @@ $ ./get.sh 2023 1 > in.txt
 ### Running
 
 ```shell
+# Run go script using stdin
+$ go run ./go/2023/day01a.go < in.txt
+
+# Run go script using the result from ./get.sh
+$ ./get.sh 2023 1 > go run ./go/2023/day01a.go
+
 # Run python script using stdin
-$ python 2023/day01a.py < in.txt
+$ python ./py/2023/day01a.py < in.txt
 
 # Run python script using the result from ./get.sh
-$ ./get.sh 2023 1 > python 2023/day01a.py
+$ ./get.sh 2023 1 > python ./py/2023/day01a.py
 ```
