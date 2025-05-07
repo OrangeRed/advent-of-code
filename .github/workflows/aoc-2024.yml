@@ -1,0 +1,44 @@
+name: Update 2024 AoC Badges
+on:
+  workflow_dispatch:
+
+  # schedule:
+  #   - cron: "50 4 1-26 12 *" # from December 1st to 26th every day at 4:50 UTC (23:50 EST previous day)
+
+  push:
+    # run on push, be careful with this setting
+    # as the workflow should only be triggered at a rate lower than
+    # 4 times a hour to keep traffic on aoc site low
+    paths:
+      - "**/2024/**"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install regex requests
+
+      - name: Run Python Script
+        run: python .github/aoc-badges.py
+        env:
+          AOC_USER_ID: ${{ secrets.AOC_USER_ID }}
+          AOC_COOKIE: ${{ secrets.AOC_COOKIE }}
+          YEAR: 2024
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update README
+          file_pattern: README.md
